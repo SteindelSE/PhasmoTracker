@@ -20,24 +20,55 @@
     <script src="scripts/script.js"></script>
 </head>
 <body>
-    <!-- TODO: Login Page -->
-    <div data-role="page" id="page-login">
+    <!-- Tracker Page -->
+    <div data-role="page" id="page-tracker">
         <div data-role="header">
-            <h1>Sample Heading</h1>
+            <a href="#page-about" data-role="button" data-icon="info" data-iconpos="right"
+            data-inline="true" class="ui-btn">
+            About</a>
+            <h1>PhasmoTracker</h1>
         </div>
 
         <div data-role="main" class="ui-content">
+            <div data-role="controlgroup" data-type="horizontal">
+                <a data-role="button" id="btnEMF" onclick="changeEvidence('EMF')">EMF 5</a>
+                <a data-role="button" id="btnBOX" onclick="changeEvidence('BOX')">Spirit Box</a>
+                <a data-role="button" id="btnFINGY" onclick="changeEvidence('FINGY')">Finger Prints</a>
+                <a data-role="button" id="btnORBS" onclick="changeEvidence('ORBS')">Ghost Orbs</a>
+                <a data-role="button" id="btnWRITE" onclick="changeEvidence('WRITE')">Ghost Writing</a>
+                <a data-role="button" id="btnTEMPS" onclick="changeEvidence('TEMPS')">Freezing Temperature</a>
+                <a data-role="button" id="btnDOTS" onclick="changeEvidence('DOTS')">D.O.T.S. Projector</a>
+            </div>
+        </div>
+
+        <div data-role="footer">
+            <p>
+                <small>Copyright &copy; 2021 - SteindelSE</small>
+            </p>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div data-role="page" id="page-about">
+        <div data-role="header">
+            <a href="#page-tracker" data-rel="back" data-role="button" data-icon="back"
+            data-iconpos="left" data-inline="true">
+            Back</a>
+            <h1>PhasmoTracker</h1>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <h2>About</h2>
             <p>Sample text in the content</p>
         </div>
 
         <div data-role="footer">
             <p>
-                Sample text in the footer. <small>This is small footer text.</small>
+                <small>Copyright &copy; 2021 - SteindelSE</small>
             </p>
         </div>
     </div>
 
-    <!-- TODO: About Page -->
     <!-- TODO: Disclaimer Page -->
     <!-- TODO: User Information/Profile Page -->
     <!-- TODO: Menu Page -->
