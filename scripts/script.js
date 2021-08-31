@@ -1,11 +1,13 @@
 /*
 Author: Derek Steindel
 Date: 8/30/2021
-Purpose: A third party tracking utility for Phasmophobia
+Purpose: A third party tracking utility for Phasmophobia.
 */
 
-// Page Load Functions
+/* Page Load Functions */
 
+// Page loader. Performs actions upon display of specific
+// page divs.
 $(document).on("pageshow", function () {
     const activePageId = $(".ui-page-active").attr("id");
     if (activePageId == "page-tracker") {
@@ -13,8 +15,10 @@ $(document).on("pageshow", function () {
     }
   });
 
-// Button click events
+/* Button click events */
 
+// Delete evidence and reload the page to force update upon
+// clicking btnReset.
 $("#btnReset").click(function() {
     try{
         localStorage.removeItem("evidence");
@@ -26,8 +30,12 @@ $("#btnReset").click(function() {
     }
 });
 
-// Button click functions
+/* Button click functions */
 
+// Update evidence stored in localStorage with evidenceType
+// provided by the button pressed. Update button backgrounds
+// and evidence to reflect selected evidence and evidence that
+// is not possible anymore.
 function updateEvidence(evidenceType, initialLoad = false){
     try{
       let evidence = JSON.parse(localStorage.getItem("evidence"));
@@ -44,7 +52,7 @@ function updateEvidence(evidenceType, initialLoad = false){
           }
       }
 
-      // If we already have 3 evidence, do nothing
+      // If we already have 3 evidence, do nothing.
       if (getEvidenceCount(evidence) == 3){
           return;
       }
@@ -174,20 +182,11 @@ function updateEvidence(evidenceType, initialLoad = false){
     }
 }
 
-// Functions
+/* Functions */
 
+// Show all possible ghosts based on the supplied evidence.
 function showPossibilities(evidence) {
     const ghosts = getGhosts();
-
-    const fullItem = {
-        EMF: "EMF 5",
-        BOX: "Spirit Box",
-        FING: "Fingerprints",
-        ORBS: "Ghost Orbs",
-        BOOK: "Book Writing",
-        TEMP: "Freezing Temperature",
-        DOTS: "D.O.T.S. Projector"
-    }
 
     $("#grpPossibilities").html("");
 
@@ -201,71 +200,92 @@ function showPossibilities(evidence) {
                     (count == 2 && (evidence[element[1]] == 1 && evidence[element[2]] == 1)) ||
                     (count == 2 && (evidence[element[0]] == 1 && evidence[element[2]] == 1)) ||
                     (count == 3 && (evidence[element[0]] == 1 && evidence[element[1]] == 1 && evidence[element[2]] == 1))){
-                    let possibleDiv = document.getElementById("grpPossibilities");
-                    let ghostTable = document.createElement("table");
-                    ghostTable.style.width = "100%";
-                    ghostTable.setAttribute("border", "1");
-                    let ghostTableBody = document.createElement("tbody");
-    
-                    let tableRow = document.createElement("tr");
-                    let tableHeader = document.createElement("th");
-                    let tableData = document.createElement("td");
-                    
-                    tableHeader.appendChild(document.createTextNode(`${ghost}`));
-                    tableRow.appendChild(tableHeader);
-                    ghostTableBody.appendChild(tableRow);
-                    for (let i = 0; i < element.length; i++) {
-                        const item = element[i];
-                        tableRow = document.createElement("tr");
-                        tableData = document.createElement("td");
-                        switch (i) {
-                            case 0:
-                            case 1:
-                            case 2:
-                                tableData.appendChild(document.createTextNode(`Evidence ${i+1}: ${fullItem[item]}`));
-                                break;
-                            case 3:
-                                tableData.appendChild(document.createTextNode(`Strength: ${item}`));
-                                break;
-                            case 4:
-                                tableData.appendChild(document.createTextNode(`Weakness: ${item}`));
-                                break;
-                            case 5:
-                                tableData.appendChild(document.createTextNode("[NOTES]"));
-                                let unorderedlist = document.createElement("ul");
-                                for (let j = 0; j < item.length; j++) {
-                                    const subitem = item[j];
-                                    let listItem = document.createElement("li");
-                                    listItem.appendChild(document.createTextNode(`${subitem}`))
-                                    unorderedlist.appendChild(listItem);
-                                }
-                                tableData.appendChild(unorderedlist);
-                                break;
-                        
-                            default:
-                                break;
-                        }
-                        tableRow.appendChild(tableData);
-                        ghostTableBody.appendChild(tableRow);
-                    }
-                    ghostTable.appendChild(ghostTableBody);
-                    possibleDiv.appendChild(ghostTable);
+                    displayGhostTable(ghost, element);
                 }
             }
         }
     }
 }
 
+// Display a table "card" for the provided ghost type where ghost
+// is the name of the ghost and element is a 6 item array of strings
+// containing Evidence 1, Evidence 2, Evidence 3, Strength, Weakness,
+// and an array containing strings with Notes for the ghost.
+function displayGhostTable(ghost, element) {
+    const fullItem = {
+        EMF: "EMF 5",
+        BOX: "Spirit Box",
+        FING: "Fingerprints",
+        ORBS: "Ghost Orbs",
+        BOOK: "Book Writing",
+        TEMP: "Freezing Temperature",
+        DOTS: "D.O.T.S. Projector"
+    }
+
+    let possibleDiv = document.getElementById("grpPossibilities");
+    let ghostTable = document.createElement("table");
+    ghostTable.style.width = "100%";
+    ghostTable.setAttribute("border", "1");
+    let ghostTableBody = document.createElement("tbody");
+
+    let tableRow = document.createElement("tr");
+    let tableHeader = document.createElement("th");
+    let tableData = document.createElement("td");
+
+    tableHeader.appendChild(document.createTextNode(`${ghost}`));
+    tableRow.appendChild(tableHeader);
+    ghostTableBody.appendChild(tableRow);
+    for (let i = 0; i < element.length; i++) {
+        const item = element[i];
+        tableRow = document.createElement("tr");
+        tableData = document.createElement("td");
+        switch (i) {
+            case 0:
+            case 1:
+            case 2:
+                tableData.appendChild(document.createTextNode(`Evidence ${i + 1}: ${fullItem[item]}`));
+                break;
+            case 3:
+                tableData.appendChild(document.createTextNode(`Strength: ${item}`));
+                break;
+            case 4:
+                tableData.appendChild(document.createTextNode(`Weakness: ${item}`));
+                break;
+            case 5:
+                tableData.appendChild(document.createTextNode("[NOTES]"));
+                let unorderedlist = document.createElement("ul");
+                for (let j = 0; j < item.length; j++) {
+                    const subitem = item[j];
+                    let listItem = document.createElement("li");
+                    listItem.appendChild(document.createTextNode(`${subitem}`));
+                    unorderedlist.appendChild(listItem);
+                }
+                tableData.appendChild(unorderedlist);
+                break;
+
+            default:
+                break;
+        }
+        tableRow.appendChild(tableData);
+        ghostTableBody.appendChild(tableRow);
+    }
+    ghostTable.appendChild(ghostTableBody);
+    possibleDiv.appendChild(ghostTable);
+}
+
+// Get number of evidence currently selected.
 function getEvidenceCount(evidence) {
     let count = 0;
     for (const [key, value] of Object.entries(evidence)) {
-        if (value == true) {
+        if (value == 1) {
             count++;
         }
     }
     return count;
 }
 
+// Get evidence from localStorage and update displayed evidence on
+// the screen.
 function showEvidence() {
     try{
         const evidence = JSON.parse(localStorage.getItem("evidence"));
