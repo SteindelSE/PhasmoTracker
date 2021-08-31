@@ -18,7 +18,7 @@ function getGhosts() {
                       "BOX",
                       "DOTS",
                       "Cannot be tracked by footsteps.",
-                      "Toxic reaction to salt."
+                      "Toxic reaction to salt.",
                      ["Activity will skyrocket if it steps in salt."]],
         Phantom:     ["BOX",
                       "FING",
