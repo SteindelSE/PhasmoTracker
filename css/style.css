@@ -1,5 +1,19 @@
 /*
-  Author: 
-  Date: 
-  Purpose: 
+Author: Derek Steindel
+Date: 8/30/2021
+Purpose: A third party tracking utility for Phasmophobia
 */
+
+#btnLog
+{
+  background-color: greenyellow;
+  color: black;
+  text-shadow: none;
+}
+
+#btnReset
+{
+  background-color: red;
+  color: black;
+  text-shadow: none;
+}

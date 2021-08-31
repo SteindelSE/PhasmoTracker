@@ -1,7 +1,7 @@
 <!--
-  Author: 
-  Date: 
-  Purpose: 
+Author: Derek Steindel
+Date: 8/30/2021
+Purpose: A third party tracking utility for Phasmophobia
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +17,6 @@
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <script src="scripts/script.js"></script>
 </head>
 <body>
     <!-- Tracker Page -->
@@ -30,14 +29,24 @@
         </div>
 
         <div data-role="main" class="ui-content">
+            <h2>Evidence</h2>
             <div data-role="controlgroup" data-type="horizontal">
-                <a data-role="button" id="btnEMF" onclick="changeEvidence('EMF')">EMF 5</a>
-                <a data-role="button" id="btnBOX" onclick="changeEvidence('BOX')">Spirit Box</a>
-                <a data-role="button" id="btnFINGY" onclick="changeEvidence('FINGY')">Finger Prints</a>
-                <a data-role="button" id="btnORBS" onclick="changeEvidence('ORBS')">Ghost Orbs</a>
-                <a data-role="button" id="btnWRITE" onclick="changeEvidence('WRITE')">Ghost Writing</a>
-                <a data-role="button" id="btnTEMPS" onclick="changeEvidence('TEMPS')">Freezing Temperature</a>
-                <a data-role="button" id="btnDOTS" onclick="changeEvidence('DOTS')">D.O.T.S. Projector</a>
+                <a data-role="button" id="btnEMF" onclick="updateEvidence('EMF')">EMF 5</a>
+                <a data-role="button" id="btnBOX" onclick="updateEvidence('BOX')">Spirit Box</a>
+                <a data-role="button" id="btnFING" onclick="updateEvidence('FING')">Fingerprints</a>
+                <a data-role="button" id="btnORBS" onclick="updateEvidence('ORBS')">Ghost Orbs</a>
+                <a data-role="button" id="btnBOOK" onclick="updateEvidence('BOOK')">Ghost Writing</a>
+                <a data-role="button" id="btnTEMP" onclick="updateEvidence('TEMP')">Freezing Temperature</a>
+                <a data-role="button" id="btnDOTS" onclick="updateEvidence('DOTS')">D.O.T.S. Projector</a>
+            </div>
+            <div data-role="controlgroup" data-type="horizontal">
+                <!-- To be added with statistics system:
+                <a data-role="button" id="btnLog">Log Ghost</a> -->
+                <a data-role="button" id="btnReset">Reset Evidence</a>
+            </div>
+            <h2>Possibilities</h2>
+            <div id="grpPossibilities">
+                <!--This should be programmatically created.-->
             </div>
         </div>
 
@@ -77,5 +86,7 @@
     <!-- TODO: Graph Page -->
     <!-- TODO: Advice Page -->
 
+    <script src="scripts/script.js"></script>
+    <script src="scripts/ghosts.js"></script>
 </body>
 </html>
