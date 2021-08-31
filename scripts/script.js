@@ -44,6 +44,11 @@ function updateEvidence(evidenceType, initialLoad = false){
           }
       }
 
+      // If we already have 3 evidence, do nothing
+      if (getEvidenceCount(evidence) == 3){
+          return;
+      }
+
       switch (evidenceType) {
         case "EMF":
             if (!initialLoad){
@@ -190,13 +195,8 @@ function showPossibilities(evidence) {
         if (Object.hasOwnProperty.call(ghosts, ghost)) {
             const element = ghosts[ghost];
             if (evidence[element[0]] != -1 && evidence[element[1]] != -1 && evidence[element[2]] != -1){
-                let count = 0;
-                for (const [key,value] of Object.entries(evidence)) {
-                    if (value == true){
-                        count++;
-                    }
-                }
-                if ((count <= 1 && evidence[element[0]] == 1 || evidence[element[1]] == 1 || evidence[element[2]] == 1) ||
+                let count = getEvidenceCount(evidence);
+                if ((count <= 1 && (evidence[element[0]] == 1 || evidence[element[1]] == 1 || evidence[element[2]] == 1)) ||
                     (count == 2 && (evidence[element[0]] == 1 && evidence[element[1]] == 1)) ||
                     (count == 2 && (evidence[element[1]] == 1 && evidence[element[2]] == 1)) ||
                     (count == 2 && (evidence[element[0]] == 1 && evidence[element[2]] == 1)) ||
@@ -208,10 +208,11 @@ function showPossibilities(evidence) {
                     let ghostTableBody = document.createElement("tbody");
     
                     let tableRow = document.createElement("tr");
+                    let tableHeader = document.createElement("th");
                     let tableData = document.createElement("td");
                     
-                    tableData.appendChild(document.createTextNode(`${ghost}`));
-                    tableRow.appendChild(tableData);
+                    tableHeader.appendChild(document.createTextNode(`${ghost}`));
+                    tableRow.appendChild(tableHeader);
                     ghostTableBody.appendChild(tableRow);
                     for (let i = 0; i < element.length; i++) {
                         const item = element[i];
@@ -253,6 +254,16 @@ function showPossibilities(evidence) {
             }
         }
     }
+}
+
+function getEvidenceCount(evidence) {
+    let count = 0;
+    for (const [key, value] of Object.entries(evidence)) {
+        if (value == true) {
+            count++;
+        }
+    }
+    return count;
 }
 
 function showEvidence() {

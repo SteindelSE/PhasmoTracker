@@ -4,6 +4,11 @@ Date: 8/30/2021
 Purpose: A third party tracking utility for Phasmophobia
 */
 
+table
+{
+  margin-bottom: 30px;
+}
+
 #btnLog
 {
   background-color: greenyellow;
