@@ -53,7 +53,7 @@ function updateEvidence(evidenceType, initialLoad = false){
       }
 
       // If we already have 3 evidence, do nothing.
-      if (getEvidenceCount(evidence) == 3){
+      if ( getEvidenceCount(evidence) == 3 && evidence[evidenceType] == 0 ){
           return;
       }
 
@@ -174,7 +174,7 @@ function updateEvidence(evidenceType, initialLoad = false){
                 $("#btnBOOK").css("background-color", "red");
                 $("#btnBOOKText").css("text-decoration", "line-through");
                 if (!initialLoad){
-                    evidence.BOOK = 0;
+                    evidence.BOOK = -1;
                 }
             }
             else{
