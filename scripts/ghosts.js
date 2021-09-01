@@ -13,6 +13,7 @@ function getGhosts() {
                       "None.",
                       "Smudge sticks prevent hunting longer than other ghosts.",
                      ["Smudging will prevent hunting for 180 seconds instead of 90.",
+                      "Faint footsteps can only be heard with the Parabolic Mic.",
                       "META: Only ghost that will cause random footsteps < 15 seconds apart."]],
         Wraith:      ["EMF",
                       "BOX",
@@ -38,7 +39,7 @@ function getGhosts() {
                       "ORBS",
                       "DOTS",
                       "Will only target one person at a time.",
-                      "Fears crucifixes. Less aggressive when near one."
+                      "Fears crucifixes. Less aggressive when near one.",
                      ["Hunt stopping range of crucifixes are 5m instead of 3m.",
                       "META: Hunts > 70% but < 80% sanity are a sure sign of a banshee using its power.",
                       "META: If it refuses to change targets during a hunt, it's a banshee."]],
@@ -117,6 +118,6 @@ function getGhosts() {
                       "BOOK",
                       "Quieter when hunting.",
                       "More frequently make paranormal sounds.",
-                     ["META: Back to back sounds on the paramic can indicate a Myling."]]
+                     ["META: Back to back sounds on the Parabolic Mic can indicate a Myling."]]
     };
 }

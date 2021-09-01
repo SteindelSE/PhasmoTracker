@@ -64,14 +64,17 @@ function updateEvidence(evidenceType, initialLoad = false){
             }
             if (evidence.EMF == 1){
                 $("#btnEMF").css("background-color", "green");
-                $("#btnORBS").css({"background-color": "red", "text-decoration": "line-through"});
+                $("#btnEMFText").css("text-decoration", "none");
+                $("#btnORBS").css("background-color", "red");
+                $("#btnORBSText").css("text-decoration", "line-through");
                 if (!initialLoad){
                     evidence.ORBS = -1;
                 }
             }
             else{
                 $("#btnEMF").css("background-color", "transparent");
-                $("#btnORBS").css({"background-color": "transparent", "text-decoration": "none"});
+                $("#btnORBS").css("background-color", "transparent");
+                $("#btnORBSText").css("text-decoration", "none");
             }
             break;
         case "BOX":
@@ -80,14 +83,17 @@ function updateEvidence(evidenceType, initialLoad = false){
             }
             if (evidence.BOX == 1){
                 $("#btnBOX").css("background-color", "green");
-                $("#btnTEMP").css({"background-color": "red", "text-decoration": "line-through"});
+                $("#btnBOXText").css("text-decoration", "none");
+                $("#btnTEMP").css("background-color", "red");
+                $("#btnTEMPText").css("text-decoration", "line-through");
                 if (!initialLoad){
                     evidence.TEMP = -1;
                 }
             }
             else{
                 $("#btnBOX").css("background-color", "transparent");
-                $("#btnTEMP").css({"background-color": "transparent", "text-decoration": "none"});
+                $("#btnTEMP").css("background-color", "transparent");
+                $("#btnTEMPText").css("text-decoration", "none");
             }
             break;
         case "FING":
@@ -107,14 +113,17 @@ function updateEvidence(evidenceType, initialLoad = false){
             }
             if (evidence.ORBS == 1){
                 $("#btnORBS").css("background-color", "green");
-                $("#btnEMF").css({"background-color": "red", "text-decoration": "line-through"});
+                $("#btnORBSText").css("text-decoration", "none");
+                $("#btnEMF").css("background-color", "red");
+                $("#btnEMFText").css("text-decoration", "line-through");
                 if (!initialLoad){
                     evidence.EMF = -1;
                 }
             }
             else{
                 $("#btnORBS").css("background-color", "transparent");
-                $("#btnEMF").css({"background-color": "transparent", "text-decoration": "none"});
+                $("#btnEMF").css("background-color", "transparent");
+                $("#btnEMFText").css("text-decoration", "none");
             }
             break;
         case "BOOK":
@@ -123,14 +132,17 @@ function updateEvidence(evidenceType, initialLoad = false){
             }
             if (evidence.BOOK == 1){
                 $("#btnBOOK").css("background-color", "green");
-                $("#btnDOTS").css({"background-color": "red", "text-decoration": "line-through"});
+                $("#btnBOOKText").css("text-decoration", "none");
+                $("#btnDOTS").css("background-color", "red");
+                $("#btnDOTSText").css("text-decoration", "line-through");
                 if (!initialLoad){
                     evidence.DOTS = -1;
                 }
             }
             else{
                 $("#btnBOOK").css("background-color", "transparent");
-                $("#btnDOTS").css({"background-color": "transparent", "text-decoration": "none"});
+                $("#btnDOTS").css("background-color", "transparent");
+                $("#btnDOTSText").css("text-decoration", "none");
             }
             break;
         case "TEMP":
@@ -139,14 +151,17 @@ function updateEvidence(evidenceType, initialLoad = false){
             }
             if (evidence.TEMP == 1){
                 $("#btnTEMP").css("background-color", "green");
-                $("#btnBOX").css({"background-color": "red", "text-decoration": "line-through"});
+                $("#btnTEMPText").css("text-decoration", "none");
+                $("#btnBOX").css("background-color", "red");
+                $("#btnBOXText").css("text-decoration", "line-through");
                 if (!initialLoad){
                     evidence.BOX = -1;
                 }
             }
             else{
                 $("#btnTEMP").css("background-color", "transparent");
-                $("#btnBOX").css({"background-color": "transparent", "text-decoration": "none"});
+                $("#btnBOX").css("background-color", "transparent");
+                $("#btnBOXText").css("text-decoration", "none");
             }
             break;
         case "DOTS":
@@ -155,14 +170,17 @@ function updateEvidence(evidenceType, initialLoad = false){
             }
             if (evidence.DOTS == 1){
                 $("#btnDOTS").css("background-color", "green");
-                $("#btnBOOK").css({"background-color": "red", "text-decoration": "line-through"});
+                $("#btnDOTSText").css("text-decoration", "none");
+                $("#btnBOOK").css("background-color", "red");
+                $("#btnBOOKText").css("text-decoration", "line-through");
                 if (!initialLoad){
                     evidence.BOOK = 0;
                 }
             }
             else{
                 $("#btnDOTS").css("background-color", "transparent");
-                $("#btnBOOK").css({"background-color": "transparent", "text-decoration": "none"});
+                $("#btnBOOK").css("background-color", "transparent");
+                $("#btnBOOKText").css("text-decoration", "none");
             }
             break;
                                                                         
