@@ -1,7 +1,7 @@
 /*
 Author: Derek Steindel
 Date: 8/30/2021
-Purpose: A third party tracking utility for Phasmophobia.
+Purpose: Scripts for functioning of the Tracker page.
 */
 
 /* Page Load Functions */
