@@ -5,83 +5,113 @@ Purpose: A third party tracking utility for Phasmophobia
 -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PhasmoTracker</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-    <link rel="stylesheet" href="css/style.css">
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
 
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Tracker Page -->
     <div data-role="page" id="page-tracker">
-        <div data-role="header">
-            <a href="#page-about" data-role="button" data-icon="info">
-            About</a>
-            <h1>PhasmoTracker</h1>
-        </div>
+      <div data-role="header">
+        <a href="#page-about" data-role="button" data-icon="info"> About</a>
+        <h1>PhasmoTracker</h1>
+      </div>
 
-        <div data-role="main" class="ui-content">
-            <h2>Evidence</h2>
-            <div data-role="controlgroup" data-type="horizontal">
-                <a data-role="button" id="btnEMF" onclick="updateEvidence('EMF')"><span id="btnEMFText">EMF 5</span></a>
-                <a data-role="button" id="btnBOX" onclick="updateEvidence('BOX')"><span id="btnBOXText">Spirit Box</span></a>
-                <a data-role="button" id="btnFING" onclick="updateEvidence('FING')"><span id="btnFINGText">Fingerprints</span></a>
-                <a data-role="button" id="btnORBS" onclick="updateEvidence('ORBS')"><span id="btnORBSText">Ghost Orbs</span></a>
-                <a data-role="button" id="btnBOOK" onclick="updateEvidence('BOOK')"><span id="btnBOOKText">Ghost Writing</span></a>
-                <a data-role="button" id="btnTEMP" onclick="updateEvidence('TEMP')"><span id="btnTEMPText">Freezing Temperature</span></a>
-                <a data-role="button" id="btnDOTS" onclick="updateEvidence('DOTS')"><span id="btnDOTSText">D.O.T.S. Projector</span></a>
-            </div>
-            <div data-role="controlgroup" data-type="horizontal">
-                <!-- To be added with statistics system:
+      <div data-role="main" class="ui-content">
+        <h2>Evidence</h2>
+        <div data-role="controlgroup" data-type="horizontal">
+          <a data-role="button" id="btnEMF" onclick="updateEvidence('EMF')"
+            ><span id="btnEMFText">EMF 5</span></a
+          >
+          <a data-role="button" id="btnBOX" onclick="updateEvidence('BOX')"
+            ><span id="btnBOXText">Spirit Box</span></a
+          >
+          <a data-role="button" id="btnFING" onclick="updateEvidence('FING')"
+            ><span id="btnFINGText">Fingerprints</span></a
+          >
+          <a data-role="button" id="btnORBS" onclick="updateEvidence('ORBS')"
+            ><span id="btnORBSText">Ghost Orbs</span></a
+          >
+          <a data-role="button" id="btnBOOK" onclick="updateEvidence('BOOK')"
+            ><span id="btnBOOKText">Ghost Writing</span></a
+          >
+          <a data-role="button" id="btnTEMP" onclick="updateEvidence('TEMP')"
+            ><span id="btnTEMPText">Freezing Temperature</span></a
+          >
+          <a data-role="button" id="btnDOTS" onclick="updateEvidence('DOTS')"
+            ><span id="btnDOTSText">D.O.T.S. Projector</span></a
+          >
+        </div>
+        <div data-role="controlgroup" data-type="horizontal">
+          <!-- To be added with statistics system:
                 <a data-role="button" id="btnLog">Log Ghost</a> -->
-                <a data-role="button" id="btnReset">Reset Evidence</a>
-            </div>
-            <h2>Possibilities</h2>
-            <div id="grpPossibilities">
-                <!--This should be programmatically created.-->
-            </div>
+          <a data-role="button" id="btnReset">Reset Evidence</a>
         </div>
+        <h2>Possibilities</h2>
+        <div id="grpPossibilities">
+          <!--This should be programmatically created.-->
+        </div>
+      </div>
 
-        <div data-role="footer">
-            <p>
-                <small>Copyright &copy; 2021 - SteindelSE</small>
-            </p>
-        </div>
+      <div data-role="footer">
+        <p>
+          <small>Copyright &copy; 2021 - SteindelSE</small>
+        </p>
+      </div>
     </div>
 
     <!-- About Page -->
     <div data-role="page" id="page-about">
-        <div data-role="header">
-            <a href="#page-tracker" data-rel="back" data-role="button" data-icon="back">
-            Back</a>
-            <h1>PhasmoTracker</h1>
-        </div>
+      <div data-role="header">
+        <a
+          href="#page-tracker"
+          data-rel="back"
+          data-role="button"
+          data-icon="back"
+        >
+          Back</a
+        >
+        <h1>PhasmoTracker</h1>
+      </div>
 
-        <div data-role="main" class="ui-content">
-            <h2>About</h2>
-            <p>A third party tracker for Phasmophobia that allows an easier hunting
-               experience for players. This application is web based, with mobile
-               in mind, and can be ran on another monitor or any other device with
-               a capable web browser, such as a phone, with ease.</p>
-            <p>Simply select up to three pieces of evidence. As you do, possible 
-               ghost's cards will be displayed for you and evidence that is no 
-               longer possible will be struck through in red.</p>
-            <h3>GitHub Repository:</h3>
-            <p><a href="https://github.com/SteindelSE/PhasmoTracker">SteindelSE/PhasmoTracker</a></p>
-        </div>
+      <div data-role="main" class="ui-content">
+        <h2>About</h2>
+        <p>
+          A third party tracker for Phasmophobia that allows an easier hunting
+          experience for players. This application is web based, with mobile in
+          mind, and can be ran on another monitor or any other device with a
+          capable web browser, such as a phone, with ease.
+        </p>
+        <p>
+          Simply select up to three pieces of evidence. As you do, possible
+          ghost's cards will be displayed for you and evidence that is no longer
+          possible will be struck through in red.
+        </p>
+        <h3>GitHub Repository:</h3>
+        <p>
+          <a href="https://github.com/SteindelSE/PhasmoTracker"
+            >SteindelSE/PhasmoTracker</a
+          >
+        </p>
+      </div>
 
-        <div data-role="footer">
-            <p>
-                <small>Copyright &copy; 2021 - SteindelSE</small>
-            </p>
-        </div>
+      <div data-role="footer">
+        <p>
+          <small>Copyright &copy; 2021 - SteindelSE</small>
+        </p>
+      </div>
     </div>
 
     <!-- TODO: Disclaimer Page -->
@@ -94,5 +124,5 @@ Purpose: A third party tracking utility for Phasmophobia
 
     <script src="scripts/script.js"></script>
     <script src="scripts/ghosts.js"></script>
-</body>
+  </body>
 </html>
